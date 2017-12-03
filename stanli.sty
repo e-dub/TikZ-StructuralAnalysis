@@ -59,7 +59,7 @@
 %		line widths
 %------------------------------------------------
 
-\newcommand{\hugeLineWidth}{2pt}		%
+\newcommand{\hugeLineWidth}{10pt}		%
 \newcommand{\bigLineWidth}{1.5pt}   %
 \newcommand{\normalLineWidth}{1pt}  %
 \newcommand{\smallLineWidth}{.7pt}  %
@@ -71,14 +71,14 @@
 
 \newcommand{\scalingParameter}{1}				%
 
-\newcommand{\hingeRadius}{1.5mm}				%
-\newcommand{\hingeAxialLength}{5mm}			%
+\newcommand{\hingeRadius}{0.75mm}				%
+\newcommand{\hingeAxialLength}{4mm}			%
 \newcommand{\hingeAxialHeight}{3mm}			%
 \newcommand{\hingeCornerLength}{3mm}		%
 
 \newcommand{\hatchingAngle}{45}         %
 \newcommand{\hatchingAmplitude}{1.1cm}	%
-\newcommand{\hatchingLength}{1.5mm}			%
+\newcommand{\hatchingLength}{1mm}			%
 
 \newcommand{\springLength}{10mm}      	%
 \newcommand{\springPreLength}{7pt}      %
@@ -87,12 +87,12 @@
 \newcommand{\springSegmentLength}{5pt}	%
 
 \newcommand{\supportGap}{1mm}						%
-\newcommand{\supportBasicLength}{12mm}	%
-\newcommand{\supportBasicHeight}{3.5mm}	%
-\newcommand{\supportLength}{8mm}				%
+\newcommand{\supportBasicLength}{15mm}	%
+\newcommand{\supportBasicHeight}{1.5mm}	%
+\newcommand{\supportLength}{7mm}				%
 \newcommand{\supportHeight}{5mm}				%
-\newcommand{\supportHatchingLength}{20mm}	%
-\newcommand{\supportHatchingHeight}{5mm}	%
+\newcommand{\supportHatchingLength}{25mm}	%
+\newcommand{\supportHatchingHeight}{2mm}	%
 
 \newcommand{\barGap}{1.5mm}							%
 \newcommand{\barAngle}{45}							%
@@ -105,9 +105,9 @@
 \newcommand{\forceLength}{10mm}					%
 \newcommand{\momentDistance}{4mm}				%
 \newcommand{\momentAngle}{270}					%
-\newcommand{\lineloadDistance}{3mm}			%
-\newcommand{\lineloadForce}{0.15}				%
-\newcommand{\lineloadInterval}{0.2}			%
+\newcommand{\lineloadDistance}{0mm}			%
+\newcommand{\lineloadForce}{0.0mm}				%
+\newcommand{\lineloadInterval}{0.05mm}			%
 
 %------------------------------------------------
 %		temperature parameters
@@ -239,7 +239,7 @@
 		\draw [hugeLine] (#2) -- (#3);
 		\coordinate (barVarA) at ($ (#2)!\barGap!-\barAngle:(#3) $);
 		\coordinate (barVarB) at ($ (#3)!\barGap!\barAngle:(#2) $);
-		\draw [smallLine,dashed] (barVarA) -- (barVarB);
+		%\draw [smallLine,dashed] (barVarA) -- (barVarB);
 		\ifthenelse{\equal{#4}{0}}{}
 			{\fill (#2) circle (\hugeLineWidth/2);}
 		\ifthenelse{\equal{#5}{0}}{}
@@ -656,6 +656,14 @@
 		\draw [smallLine] ($ (dimensioningVarA)!{-\dimensioningBar/3}!90:(dimensioningVarB) $) -- ($ (dimensioningVarA)!{\dimensioningBar/3}!90:(dimensioningVarB) $);
 		\draw [smallLine,<-] (dimensioningVarB) -- (dimensioningVarA)node [sloped,midway,above] {#5};
 	}{}
+	\ifthenelse{\equal{#1}{4}}{		%
+		\coordinate (dimensioningVarA) at ($ (#2)!{#4cm}!90:(#3) $);
+		\coordinate (dimensioningVarB) at ($ (#3)!{#4cm}!-90:(#2) $);
+		\draw [smallLine] ($ (dimensioningVarA)!{-\dimensioningBar/3}!90:(dimensioningVarB) $) -- ($ (dimensioningVarA)!{\dimensioningBar/3}!90:(dimensioningVarB) $);
+		\draw [smallLine,<->] (dimensioningVarB) -- (dimensioningVarA)node [sloped,midway,above] {#5};
+		\draw [smallLine] ($ (dimensioningVarB)!{-\dimensioningBar/3}!90:(dimensioningVarA) $) -- ($ (dimensioningVarB)!{\dimensioningBar/3}!90:(dimensioningVarA) $);
+		
+	}{}
 }
 
 %------------------------------------------------
@@ -862,7 +870,7 @@
 %		line widths
 %------------------------------------------------
 
-\newcommand{\DhugeLineWidth}{2pt}
+\newcommand{\DhugeLineWidth}{3pt}
 \newcommand{\DbigLineWidth}{1.5pt}
 \newcommand{\DnormalLineWidth}{1pt}
 \newcommand{\DsmallLineWidth}{.7pt}
@@ -925,12 +933,12 @@
 %		load parameters
 %------------------------------------------------
 
-\newcommand{\DforceDistance}{.15}
-\newcommand{\DforceLength}{1.0}
-\newcommand{\DlineloadDistance}{.3}
-\newcommand{\DlineloadForce}{0.15}
-\newcommand{\DlineloadInterval}{0.2}
-\newcommand{\DlineloadDistanceMM}{3mm}
+\newcommand{\DforceDistance}{0.0mm}
+\newcommand{\DforceLength}{1.0mm}
+\newcommand{\DlineloadDistance}{0.0mm}
+\newcommand{\DlineloadForce}{0.0mm}
+\newcommand{\DlineloadInterval}{0.025mm}
+\newcommand{\DlineloadDistanceMM}{0.0mm}
 
 %------------------------------------------------
 %		dimensioning parameters
@@ -943,7 +951,7 @@
 %		addon parameters
 %------------------------------------------------
 
-\newcommand{\DaddonLength}{4mm}
+\newcommand{\DaddonLength}{7mm}
 
 %------------------------------------------------
 %		help values
